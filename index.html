@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>TastyBurgers</title>
+  <style media="screen">
+      body{
+        margin: 0px;
+        padding: 0px;
+          box-sizing: border-box;
+      }
+    .navbar{
+      position: fixed;
+      width: 100%;
+      top: 0px;
+      left: 0px;
+      background-color: gold;
+      height: 100px;
+    }
+    .logo{
+      padding: 10px;
+    }
+    .link{
+      display: flex;
+      justify-content: flex-end;
+      align-items: baseline;
+      position: relative;
+      bottom: 70px;
+
+    }
+    .link a{
+      padding-left: 10px;
+      padding-right: 10px;
+      font-size: 20px;
+      background-color: yellow;
+      border: 5px solid gold;
+      border-radius: 1000px;
+      padding: 6px;
+      text-decoration: none;
+      width: 150px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: black;
+      font-family: 'helvetica';
+      font-weight: 600;
+    }
+    .link_hidden{
+      position: fixed;
+      top: 30px;
+      right: 30px;
+      display: none;
+
+    }
+    .link_hidden i{
+      font-size: 40px;
+      color: yellow;
+    }
+    .logo{
+      display: flex;
+      align-items: center
+    }
+    .logo h1{
+      font-size: 30px;
+      padding-left: 10px;
+      font-family: 'helvetica';
+      font-weight: 300;
+    }
+
+    @media screen and (max-width:785px) {
+      .link a{
+        font-size: 15px;
+        width: 80px;
+      }
+    }
+
+    @media screen and (max-width:580px) {
+      .link{
+    display: none;
+      }
+      .link_hidden{
+        display:block;
+
+      }
+      .logo h1{
+        font-size: 20px;
+        padding-left: 10px;
+        font-family: 'helvetica';
+        font-weight: 300;
+      }
+    }
+
+    .linkLower{
+      display: flex;
+      align-items: Center;
+      justify-content: center;
+      width: 100%;
+      position: fixed;
+      top: 90px;
+      background-color: yellow;
+      height: 40px;
+      display: none;
+      animation: fade_in 1s;
+    }
+    .linkLower a{
+      padding-left: 2vw;
+      padding-right: 2vw;
+      color: black;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 900;
+      font-family: 'helvetica';
+
+    }
+    @keyframes fade_in {
+      0%{
+        opacity: 0;
+      }
+      100%{
+        opacity: 1;
+      }
+    }
+    #video{
+  position: fixed;
+
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -1000;
+  display: flex;
+  justify-content: center;
+
+    }
+    @media screen and (max-width:934px) {
+      #video{
+    position: fixed;
+
+    min-width: 100%;
+    min-height: 500px;
+    z-index: -1000;
+    display: flex;
+    justify-content: center;
+    left: -200vw;
+    top: -20vh;
+
+      }
+    }
+
+    .content{
+      background-color: rgba(0, 0, 0, 0.5);
+      height: 90vh;
+      display: grid;
+      align-items: center;
+    }
+
+    .content .text{
+    width: 100%;
+    padding: 0.1px;
+
+
+    }
+    .text h1{
+      color: white;
+      font-family: 'dubai';
+      font-weight: 600;
+      font-size: 100px;
+      width: 100%;
+    }
+    .button{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .button button{
+      width: 250px;
+      height: 40px;
+      font-size: 20px;
+      background-color: transparent;
+      border-radius: 10000px;
+       color: white;
+       border: 2px solid white;s
+    }
+    @media screen and (max-width:400px) {
+      .text h1{
+        font-size: 36px;
+      }
+      .content{
+        height: 85vh;
+        display: grid;
+        align-content: center;
+
+      }
+    }
+    .description{
+      background-color: white;
+      padding: 0.1px;
+      display: flex;
+      font-family: 'helvetica';
+      justify-content: center;
+      border-top: 15px solid rgba(219, 219, 219, 1);
+      border-bottom: 15px solid rgba(219, 219, 219, 1);
+
+
+    }
+
+    .menu{
+      background-color: rgba(229, 229, 229, 1);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center
+    }
+    .box{
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      margin: 10px;
+      font-family: 'helvetica';
+    }
+    .box img{
+      border-radius: 10px;
+      margin: 10px;
+      width: 200px
+    }
+  </style>
+</head>
+<body>
+<script src="https://kit.fontawesome.com/adf4735634.js" crossorigin="anonymous"></script>
+<div class="navbar">
+ <div class="logo">
+   <img src="logo.png" alt="" width="75px">
+   <h1>TastyBurgers</h1>
+ </div>
+ <div class="link">
+   <a href="#">Burgers</a>
+   <a href="#">Places</a>
+   <a href="#">Order Now</a>
+ </div>
+ <div class="linkLower" id="hide">
+   <a href="#">Burgers</a>
+   <a href="#">Places</a>
+   <a href="#">Order Now</a>
+ </div>
+ <div class="link_hidden" onclick="navOpen();" id="btnOpen">
+   <i class="fa-solid fa-bars" id="icon"></i>
+ </div>
+</div>
+<div class="topper" style="height:100px; width: 100%;">
+  <!-- none -->
+</div>
+<video src="cinematic.mp4" autoplay  height=""  muted id="video">
+  <p>Help</p>
+</video>
+<div class="content"  style="">
+  <div class="text" align="center">
+    <h1>Burgers on your plate</h1>
+  </div>
+  <div class="button">
+    <button type="button" name="button">Order now.</button>
+  </div>
+  <br>
+</div>
+<div class="content_lower">
+  <div class="description">
+    <h1>Our menu:</h1>
+  </div>
+    <div class="menu" align="left">
+      <div class="box">
+        <img src="cheeseburger.png" alt="" width="150px">
+        <h2>Burger #1</h2>
+        <p>999$</p>
+      </div>
+      <div class="box">
+        <img src="cheeseburger.png" alt="" width="150px">
+        <h2>Burger #1</h2>
+        <p>999$</p>
+      </div>
+      <div class="box">
+        <img src="cheeseburger.png" alt="" width="150px">
+        <h2>Burger #1</h2>
+        <p>999$</p>
+      </div>
+
+
+    </div>
+</div>
+
+
+<script type="text/javascript">
+
+var link_hidden = document.getElementById('hide');
+var btn = document.getElementById('btnOpen');
+
+
+setInterval(function () {
+  var body = document.body.offsetWidth;
+  // console.log(body);
+  if (body > 580) {
+    link_hidden.style.cssText = "display:none";
+  }
+  else {
+    // noscript
+  }
+
+}, 10);
+
+function navOpen() {
+  var icon = document.getElementById('icon');
+    link_hidden.style.display = "flex";
+    btn.setAttribute("onclick","navClose();");
+    icon.class ="fa-solid fa-x";
+}
+function navClose() {
+  var icon = document.getElementById('icon');
+  link_hidden.style.display = "";
+  btn.setAttribute("onclick","navOpen();");
+  icon.class ="fa-solid fa-bars";
+}
+
+</script>
+
+
+</body>
+</html>
